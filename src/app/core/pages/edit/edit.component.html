@@ -1,3 +1,87 @@
-<p>
-  edit works!
-</p>
+<div class="register-body">
+  <form [formGroup]='registerForm' (ngSubmit)='registerForm.valid && register()' class="example-form">
+    <h1>Register Student</h1>
+    <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input
+         matInput
+         type="text"
+         placeholder="First Name"
+         formControlName="firstName">
+         <mat-error *ngIf="registerForm.invalid">Please enter a First name</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input
+         matInput
+         type="text"
+         placeholder="Last Name"
+         formControlName="lastName">
+         <mat-error *ngIf="registerForm.invalid">Please enter a Last name</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Phone Number</mat-label>
+        <input
+         matInput
+         type="text"
+         placeholder="Phone Number"
+         formControlName="phoneNumber">
+         <mat-error *ngIf="registerForm.invalid">Phone number entered is not valid</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+         matInput
+         type="email"
+         placeholder="Email"
+         formControlName="email">
+         <mat-error *ngIf="registerForm.invalid">Email entered is not valid</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Contry</mat-label>
+
+        <mat-select required type="text"
+        placeholder="Contry"
+        formControlName="country" >
+          <mat-option value="Nigeria">Nigeria</mat-option>
+          <mat-option value="Ghana">Ghana</mat-option>
+          <mat-option value="England">England</mat-option>
+          <mat-option value="Algeria">Algeria</mat-option>
+        </mat-select>
+       
+         <mat-error *ngIf="registerForm.invalid">Please choose a country</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>State</mat-label>
+
+        <mat-select required type="text"
+        placeholder="State"
+        formControlName="state" >
+          <mat-option value="Lagos">Lagos</mat-option>
+          <mat-option value="Anambra">Anambra</mat-option>
+          <mat-option value="Ekiti">Ekiti</mat-option>
+          <mat-option value="Kano">Kano</mat-option>
+        </mat-select>
+
+         <mat-error *ngIf="registerForm.invalid">Please choose a State</mat-error>
+      </mat-form-field>
+  
+      <div *ngIf="validationErrors.length > 0">
+        <ul>
+            <li *ngFor="let error of validationErrors">
+                {{error}}
+            </li>
+        </ul>
+      </div>
+  
+      <div>
+        <button mat-raised-button color="primary" type="submit" class="btn" [disabled]="!registerForm.valid">Register</button>
+        <button (click)="cancel()" mat-raised-button type="reset" class="btn">Cancel</button>
+      </div>
+  </form>
+</div>

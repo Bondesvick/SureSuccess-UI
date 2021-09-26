@@ -1,0 +1,13 @@
+.head-tab{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .route-item{
+        margin: 0 10px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

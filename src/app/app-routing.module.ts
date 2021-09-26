@@ -1,3 +1,4 @@
+import { LoginComponent } from './core/pages/login/login.component';
 import { ViewComponent } from './core/pages/view/view.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path:"view",
     component:ViewComponent,
+    pathMatch: "full"
+  },
+  {
+    path:"login",
+    component:LoginComponent,
     pathMatch: "full"
   },
   {

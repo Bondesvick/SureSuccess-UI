@@ -8,6 +8,10 @@ import { environment } from 'src/environments/environment';
 })
 export class StudentService {
 
-constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
+  apiBaseUrl: string;
 
+
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { 
+      this.apiBaseUrl = environment.baseURI;
+    } 
 }
