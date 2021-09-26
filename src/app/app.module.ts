@@ -1,6 +1,7 @@
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 import { ViewComponent } from './core/pages/view/view.component';
 import { NgModule } from '@angular/core';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { LoginComponent } from './core/pages/login/login.component';
 import { DeletePopupComponent } from './core/pages/modals/delete-popup/delete-popup.component';
 import { HomeComponent } from './core/pages/home/home.component';
 import { StudentService } from './core/services/student.service';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,10 +39,12 @@ import { StudentService } from './core/services/student.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     PaginationModule.forRoot(),
   ],
   providers: [
-    StudentService
+    StudentService,
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

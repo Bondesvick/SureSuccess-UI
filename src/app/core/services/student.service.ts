@@ -31,7 +31,7 @@ export class StudentService {
       return this.http.get<StudentResponse>(this.apiBaseUrl + `read/${id}`)
     }
 
-    getStudents(pageSize: string, pageIndex: string){
+    getStudents(pageSize: number, pageIndex: number){
       return this.http.get<PaginatedStudents>(this.apiBaseUrl + `read?pageSize=${pageSize}&pageIndex=${pageIndex}`)
     }
 

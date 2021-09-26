@@ -40,17 +40,26 @@ export class EditComponent implements OnInit {
 
   register(){
     console.log("reg")
-    console.log(this.mapStudentData())
+
+    if(this.currentStudent?.id){
+        //this.service.update()
+    }
+    else{
+
+      console.log(this.mapNewStudentData())
+
+      this.service.register(this.mapNewStudentData()).subscribe(
+        (respose)=>{
+            console.log(respose)
+        }
+      )
+    }
   }
 
   cancel(){
   }
 
-  mapStudentData() : AddStudent {
-
-    if(this.currentStudent?.id){
-
-    }
+  mapNewStudentData() : AddStudent {
 
     let aStudent : AddStudent = {
       firstName: this.registerForm.controls.firstName.value,

@@ -1,10 +1,24 @@
-<mat-card color="primary" style="background-color: #26A69A; height: 50px">
-
-   <div class="head-tab">
-    <div class="route-item" routerLink="/">Home</div>
-    <div class="route-item" routerLink="/edit">Add Student</div>
-    <div class="route-item" routerLink="/login">Login</div>
+<mat-toolbar color="primary" class="mat-elevation-z5 sticky">
+  <div class="head-tab">
+    <div class="route-item" routerLink="/">
+      <span>
+        Home
+      </span>
+     
+    </div>
+    <div class="route-item" routerLink="/edit" >
+      
+      <span>
+        Add Student
+      </span>
+    
+    </div>
+    <div class="route-item" routerLink="/login" >
+      <span>
+        Login
+      </span>
+    </div>
    </div>
-</mat-card>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
