@@ -16,6 +16,7 @@ import { EditComponent } from './core/pages/edit/edit.component';
 import { LoginComponent } from './core/pages/login/login.component';
 import { DeletePopupComponent } from './core/pages/modals/delete-popup/delete-popup.component';
 import { HomeComponent } from './core/pages/home/home.component';
+import { StudentService } from './core/services/student.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { HomeComponent } from './core/pages/home/home.component';
     HttpClientModule,
     PaginationModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    StudentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

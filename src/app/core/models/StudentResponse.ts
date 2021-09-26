@@ -1,4 +1,4 @@
-export interface EditStudent {
+export interface StudentResponse {
     id: string;
     firstName: string;
     lastName: string;

@@ -1,7 +1,11 @@
+import { AddStudent } from './../models/AddStudent';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import { EditStudent } from '../models/EditStudent';
+import { StudentResponse } from '../models/StudentResponse';
+import { PaginatedStudents } from '../models/PaginatedStudents';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +18,24 @@ export class StudentService {
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) { 
       this.apiBaseUrl = environment.baseURI;
     } 
+
+    register(student: AddStudent){
+      return this.http.post<any>(this.apiBaseUrl + 'create', student)
+    }
+
+    update(student: EditStudent){
+      return this.http.post<StudentResponse>(this.apiBaseUrl + 'update', student)
+    }
+
+    getStudent(id: string){
+      return this.http.get<StudentResponse>(this.apiBaseUrl + `read/${id}`)
+    }
+
+    getStudents(pageSize: string, pageIndex: string){
+      return this.http.get<PaginatedStudents>(this.apiBaseUrl + `read?pageSize=${pageSize}&pageIndex=${pageIndex}`)
+    }
+
+    delteStudent(id: string){
+      return this.http.delete<any>(this.apiBaseUrl + `delete/${id}`)
+    }
 }

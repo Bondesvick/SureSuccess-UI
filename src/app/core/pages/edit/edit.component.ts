@@ -1,5 +1,9 @@
+import { element } from 'protractor';
+import { StudentResponse } from './../../models/StudentResponse';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AddStudent } from '../../models/AddStudent';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-edit',
@@ -12,7 +16,9 @@ export class EditComponent implements OnInit {
 
   validationErrors: string[] = [];
 
-  constructor(private fb: FormBuilder) { }
+  currentStudent : StudentResponse
+
+  constructor(private fb: FormBuilder, private service: StudentService) { }
 
   ngOnInit() {
     this.initializeForm()
@@ -34,9 +40,28 @@ export class EditComponent implements OnInit {
 
   register(){
     console.log("reg")
+    console.log(this.mapStudentData())
   }
 
   cancel(){
+  }
+
+  mapStudentData() : AddStudent {
+
+    if(this.currentStudent?.id){
+
+    }
+
+    let aStudent : AddStudent = {
+      firstName: this.registerForm.controls.firstName.value,
+      lastName: this.registerForm.controls.lastName.value,
+      email: this.registerForm.controls.email.value,
+      phone: this.registerForm.controls.phoneNumber.value,
+      country: this.registerForm.controls.country.value,
+      state: this.registerForm.controls.state.value
+        }
+
+    return aStudent;
   }
 
 }
