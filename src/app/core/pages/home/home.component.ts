@@ -78,13 +78,14 @@ export class HomeComponent implements OnInit {
   viewStudent(student: StudentResponse){
     console.log(student)
     this.router.navigate(["view/"+student.id])
-          .then(() => {
-            window.location.reload();
-          });
+          // .then(() => {
+          //   window.location.reload();
+          // });
   }
 
   editStudent(student: StudentResponse){
     console.log(student)
+    this.router.navigate(["edit/"+student.id])
   }
 
   deleteStudent(student: StudentResponse){

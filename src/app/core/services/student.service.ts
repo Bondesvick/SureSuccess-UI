@@ -24,7 +24,7 @@ export class StudentService {
     }
 
     update(student: EditStudent){
-      return this.http.post<StudentResponse>(this.apiBaseUrl + 'update', student)
+      return this.http.put<StudentResponse>(this.apiBaseUrl + `update/${student.id}`, student)
     }
 
     getStudent(id: string){

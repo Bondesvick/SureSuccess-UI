@@ -5,7 +5,7 @@
     </mat-progress-bar>
     <br>
   </section>
-  
+
 <div class="register-body">
   <form [formGroup]='registerForm' (ngSubmit)='registerForm.valid && register()' class="example-form">
     <h1>Register Student</h1>
@@ -88,7 +88,7 @@
       </div>
   
       <div>
-        <button mat-raised-button color="primary" type="submit" class="btn" [disabled]="!registerForm.valid">Register</button>
+        <button mat-raised-button color="primary" type="submit" class="btn" [disabled]="!registerForm.valid">Submit</button>
         <button (click)="cancel()" mat-raised-button type="reset" class="btn">Cancel</button>
       </div>
   </form>
