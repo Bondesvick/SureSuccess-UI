@@ -23,7 +23,7 @@ const routes: Routes = [
     pathMatch: "full"
   },
   {
-    path:"view",
+    path:"view/:id",
     component:ViewComponent,
     pathMatch: "full"
   },

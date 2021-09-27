@@ -1,3 +1,11 @@
+
+  <section *ngIf="showSpinner">
+    <mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="value"
+      [bufferValue]="bufferValue">
+    </mat-progress-bar>
+    <br>
+  </section>
+  
 <div class="register-body">
   <form [formGroup]='registerForm' (ngSubmit)='registerForm.valid && register()' class="example-form">
     <h1>Register Student</h1>

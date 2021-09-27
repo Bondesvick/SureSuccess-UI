@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AddStudent } from '../../models/AddStudent';
 import { StudentService } from '../../services/student.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit',
@@ -18,7 +19,15 @@ export class EditComponent implements OnInit {
 
   currentStudent : StudentResponse
 
-  constructor(private fb: FormBuilder, private service: StudentService) { }
+  showSpinner: Boolean = false;
+  class = '';
+  color = 'primary';
+  mode = 'query';
+  value = 50;
+  bufferValue = 75;
+
+  constructor(private fb: FormBuilder, private service: StudentService, 
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.initializeForm()
@@ -48,11 +57,29 @@ export class EditComponent implements OnInit {
 
       console.log(this.mapNewStudentData())
 
+      this.showSpinner = true
       this.service.register(this.mapNewStudentData()).subscribe(
         (respose)=>{
+          this.showSpinner = false
             console.log(respose)
+
+            this._snackBar.open(`Student successfuly added!`, 'OK', {
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+              duration: 5000,
+            });
         }
-      )
+      ),
+      (error) => {
+        this.showSpinner = false;
+        console.log(error)
+
+        this._snackBar.open(`Techincal error occurred while saving student information`, 'Failed', {
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          duration: 5000,
+        });
+      }
     }
   }
 

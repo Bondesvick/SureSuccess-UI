@@ -1,3 +1,30 @@
-<p>
+<!-- <p>
   view works!
-</p>
+</p> -->
+
+<section *ngIf="showSpinner">
+  <mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="value"
+    [bufferValue]="bufferValue">
+  </mat-progress-bar>
+  <br>
+</section>
+
+<div class="main-container" *ngIf="studentResponse">
+
+  <mat-card class="data-area">
+
+    <h2>First Name:   <span class="data-info">{{studentResponse?.firstName}}</span></h2>
+
+    <h2>Last Name:  <span class="data-info">{{studentResponse?.lastName}}</span></h2>
+
+    <h2>Phone Number:   <span class="data-info">{{studentResponse?.phone}}</span></h2>
+
+    <h2>Email:  <span class="data-info">{{studentResponse?.email}}</span></h2>
+
+    <h2>Country: <span class="data-info">{{studentResponse?.country}}</span></h2>
+
+    <h2>State:  <span class="data-info">{{studentResponse?.state}}</span></h2>
+  </mat-card>
+
+ 
+</div>
